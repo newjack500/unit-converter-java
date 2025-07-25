@@ -48,26 +48,16 @@ public class UnitConverterGUI extends JFrame implements ActionListener {
             double result = 0;
             String selected = (String) conversionType.getSelectedItem();
 
-            switch (selected) {
-                case "Meters to Feet":
-                    result = input * 3.28084;
-                    break;
-                case "Feet to Meters":
-                    result = input / 3.28084;
-                    break;
-                case "Kilograms to Pounds":
-                    result = input * 2.20462;
-                    break;
-                case "Pounds to Kilograms":
-                    result = input / 2.20462;
-                    break;
-                case "Celsius to Fahrenheit":
-                    result = (input * 9 / 5) + 32;
-                    break;
-                case "Fahrenheit to Celsius":
-                    result = (input - 32) * 5 / 9;
-                    break;
-            }
+            assert selected != null;
+            result = switch (selected) {
+                case "Meters to Feet" -> input * 3.28084;
+                case "Feet to Meters" -> input / 3.28084;
+                case "Kilograms to Pounds" -> input * 2.20462;
+                case "Pounds to Kilograms" -> input / 2.20462;
+                case "Celsius to Fahrenheit" -> (input * 9 / 5) + 32;
+                case "Fahrenheit to Celsius" -> (input - 32) * 5 / 9;
+                default -> result;
+            };
 
             resultLabel.setText("Result: " + result);
         } catch (NumberFormatException ex) {
