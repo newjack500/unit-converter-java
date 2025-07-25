@@ -59,7 +59,7 @@ public class UnitConverterGUI extends JFrame implements ActionListener {
                 default -> result;
             };
 
-            resultLabel.setText("Result: " + result);
+            resultLabel.setText("Result:  " + result);
         } catch (NumberFormatException ex) {
             resultLabel.setText("Please enter a valid number.");
         }
